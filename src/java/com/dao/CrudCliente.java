@@ -89,7 +89,7 @@ public class CrudCliente extends Conexion {
         return lista;
     }
     
-    public Cliente llerId(Cliente c) throws Exception{
+    public Cliente leerId(Cliente c) throws Exception{
         Cliente cl= null;
         ResultSet res;
         try {
