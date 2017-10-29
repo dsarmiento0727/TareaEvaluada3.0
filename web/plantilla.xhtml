@@ -2,12 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="./css/default.css"/>
-        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
         <title>Tarea Evaluada 3</title>
     </h:head>
 
@@ -21,9 +22,23 @@
             </ui:insert>
         </div>
         <div>
+              <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
             <div id="left">
-                <ui:insert name="left">Left</ui:insert>
+                
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Inicio" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Cliente" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Empleado" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Departamento" url="http://www.primefaces.org/themes.html" />
+
+                        </p:submenu>
+
+                    </p:menu>
+                   
+               
             </div>
+              </p:layoutUnit>
             <div id="content" class="left_content">
                 <ui:insert name="content">Content</ui:insert>
             </div>

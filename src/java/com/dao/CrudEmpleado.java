@@ -25,7 +25,7 @@ public class CrudEmpleado extends Conexion{
             PreparedStatement pre = this.getCon().prepareStatement(sql);
             pre.setString(1, em.getNombre());
             pre.setString(2, em.getGenero());
-            pre.setArray(3, em.getIntereses());
+            pre.setString(3, em.convertirIntereses(em.getIntereses()));
             pre.setInt(4, em.getEdad());
             pre.setString(5, em.getDireccion());
             pre.setString(6, em.getCargo());
@@ -45,7 +45,7 @@ public class CrudEmpleado extends Conexion{
             PreparedStatement pre = this.getCon().prepareStatement(sql);
             pre.setString(1, em.getNombre());
             pre.setString(2, em.getGenero());
-            pre.setArray(3, em.getIntereses());
+            pre.setString(3, em.convertirIntereses(em.getIntereses()));
             pre.setInt(4, em.getEdad());
             pre.setString(5, em.getDireccion());
             pre.setString(6, em.getCargo());
