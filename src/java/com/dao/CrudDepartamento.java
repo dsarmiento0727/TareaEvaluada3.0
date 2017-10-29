@@ -56,7 +56,7 @@ public class CrudDepartamento extends Conexion{
             this.conectar();
             String sql="delete from departamento where codigoDepartamento=?";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
-            pre.setInt(3, d.getCodigoDepartamento());
+            pre.setInt(1, d.getCodigoDepartamento());
             pre.executeUpdate();
         } catch (Exception e) {
             throw e;
