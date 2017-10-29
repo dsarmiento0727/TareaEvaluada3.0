@@ -21,6 +21,22 @@ import javax.faces.bean.ViewScoped;
 public class ClienteBeans {
     private Cliente cli = new Cliente();
     private List<Cliente>listaclientes;
+
+    public Cliente getCli() {
+        return cli;
+    }
+
+    public void setCli(Cliente cli) {
+        this.cli = cli;
+    }
+
+    public List<Cliente> getListaclientes() {
+        return listaclientes;
+    }
+
+    public void setListaclientes(List<Cliente> listaclientes) {
+        this.listaclientes = listaclientes;
+    }
     
     public void registrar() throws Exception
     {
@@ -58,11 +74,26 @@ public class ClienteBeans {
         } catch (Exception e) {
             throw e;
         }
-    }
-    
-    public void eliminar(Cliente cli)
+    }       
+    public void modificar() throws Exception
     {
-        
+        try {
+            CrudCliente dao = new CrudCliente();
+            dao.modificarCliente(cli);
+            this.listarC();
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    public void eliminar(Cliente cli) throws Exception
+    {
+        try {
+            CrudCliente dao = new CrudCliente();
+            dao.eliminarCliente(cli);
+            this.listarC();
+        } catch (Exception e) {
+            throw e;
+        }
     }
     /**
      * Creates a new instance of ClienteBeans
