@@ -101,5 +101,16 @@ public class Empleado {
         this.codigoDepartamento = codigoDepartamento;
     }
     
-    
+    public String convertirIntereses (String[] intereses)
+    {
+        String interesesC=null;
+        for (int i = 0; i <intereses.length; i++) {
+            if(interesesC !=null)
+            interesesC = interesesC + intereses[i];
+            else
+                interesesC = intereses[i];   
+        }
+        return interesesC;
+    }
+
 }

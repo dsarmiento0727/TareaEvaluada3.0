@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Nombre de la clase:Cliente 
  * Versión:1.0 
- * Fecha:2/10/2017 
+ * Fecha:28/10/2017 
  * Copyright:ITCA-FEPADE
  * @author Karen Escobar
  */

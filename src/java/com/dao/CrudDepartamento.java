@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Nombre de la clase:CrudDepartamento
  * Versión:1.0 
- * Fecha:2/10/2017 
+ * Fecha:29/10/2017 
  * Copyright:ITCA-FEPADE
  * @author Karen Escobar
  */
