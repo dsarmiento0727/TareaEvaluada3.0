@@ -112,5 +112,21 @@ public class Empleado {
         }
         return interesesC;
     }
-
+    public String[] obtenerIntereses(String intereses)
+    {
+        String[] interesesBase=null;
+        
+        if(intereses.equals("leer"))
+            interesesBase[1] = "leer";
+        if(intereses.equals("leer,dormir"))
+            interesesBase[2] = "dormir";
+        if(intereses.equals("leer,dormir,cantar"))
+            interesesBase[3] = "cantar";
+        if(interesesBase.equals("leer,dormir,cantar,jugar"))
+            interesesBase[4] = "jugar";
+            
+        
+        return interesesBase;
+    }
+    
 }

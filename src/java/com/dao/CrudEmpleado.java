@@ -87,7 +87,7 @@ public class CrudEmpleado extends Conexion{
                 em.setCodigoEmpleado(res.getInt("codigoEmpleado"));
                 em.setNombre(res.getString("nombre"));
                 em.setGenero(res.getString("genero"));
-                em.convertirIntereses(em.setIntereses(res.getString("intereses")));
+                em.setIntereses(em.obtenerIntereses(res.getString("intereses")));
                 em.setEdad(res.getInt("edad"));
                 em.setDireccion(res.getString("direccion"));
                 em.setCargo(res.getString("cargo"));
@@ -114,7 +114,7 @@ public class CrudEmpleado extends Conexion{
                 emp= new Empleado();
                 em.setNombre(res.getString("nombre"));
                 em.setGenero(res.getString("genero"));
-                em.convertirIntereses(em.setIntereses(res.getString("intereses")));
+                em.setIntereses(em.obtenerIntereses(res.getString("intereses")));
                 em.setEdad(res.getInt("edad"));
                 em.setDireccion(res.getString("direccion"));
                 em.setCargo(res.getString("cargo"));
