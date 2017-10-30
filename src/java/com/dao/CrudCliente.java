@@ -23,7 +23,7 @@ public class CrudCliente extends Conexion {
     public void registrarCliente(Cliente c) throws Exception {
         try {
             this.conectar();
-            String sql = "inser into (nombre,genero) values(?,?)";
+            String sql = "insert into (nombre,genero) values(?,?)";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
             pre.setString(1, c.getNombre());
             pre.setString(2, c.getGenero());
@@ -70,7 +70,7 @@ public class CrudCliente extends Conexion {
         List<Cliente> lista; 
         try {
             this.conectar();
-            String sql="slect * from cliente";
+            String sql="select * from cliente";
             PreparedStatement pre=this.getCon().prepareCall(sql);
             res=pre.executeQuery();
             lista = new ArrayList();

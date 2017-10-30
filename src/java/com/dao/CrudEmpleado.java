@@ -78,7 +78,7 @@ public class CrudEmpleado extends Conexion{
         List<Empleado> lista; 
         try {
             this.conectar();
-            String sql="slect * from empleado";
+            String sql="select * from empleado";
             PreparedStatement pre=this.getCon().prepareCall(sql);
             res=pre.executeQuery();
             lista = new ArrayList();

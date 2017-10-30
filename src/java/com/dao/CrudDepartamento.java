@@ -70,7 +70,7 @@ public class CrudDepartamento extends Conexion{
         List<Departamento> lista; 
         try {
             this.conectar();
-            String sql="slect * from departamento";
+            String sql="select * from departamento";
             PreparedStatement pre=this.getCon().prepareCall(sql);
             res=pre.executeQuery();
             lista = new ArrayList();
