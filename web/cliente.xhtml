@@ -14,48 +14,49 @@
                 top
             </ui:define>
 
-            
+
             <ui:define name="content">
-                <p:growl id="msj" showDetail="true" />
-                <h:form>
-                    <h:panelGrid columns="2" columnClasses="alinder,alinizq,alinizq">
+                <h:panelGrid columns="2" columnClasses="alinder,alinizq,alinizq">
+                    <h:form id="frmCliente">
+                        <p:growl id="msj" showDetail="true"  />
+
 
                         <p:outputLabel for="txtNombre" value="Nombre" />
-                        <p:inputText id="txtNombre" value="#{clienteBean.cli.nombre}" />
+                        <p:inputText id="txtNombre" value="#{ClienteBeans.cli.nombre}" />
 
                         <p:outputLabel value="Genero" />
-                        <p:selectOneMenu value="#{clienteBean.cli.genero}">
+                        <p:selectOneRadio value="#{ClienteBeans.cli.genero}">
                             <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
                             <f:selectItem itemLabel="Femenino" itemValue="Femenino" />
-                        </p:selectOneMenu>
+                        </p:selectOneRadio>
 
                         <h:panelGroup>
-                            <p:commandButton value="Insertar" actionListener="#{clienteBean.registrar()}" />
-                            <p:commandButton value="Mostrar" actionListener="#{clienteBean.listarClis()}" />
+                            <p:commandButton value="Insertar"  actionListener="#{ClienteBeans.insertar()}" update="@form" />
+                            <p:commandButton value="Modificar"  actionListener="#{ClienteBeans.modificar()}" update="@form" />
+
+                            <p:commandButton value="Limpiar" actionListener="#{ClienteBeans.limpiar()}" update="@form" />
                         </h:panelGroup>
-                    </h:panelGrid>
-                </h:form>
-                
-                 <p:dataTable id="tblCliente" value="#{managedBean.listaClientes}"
-                             var="cliente"
-                             selection="#{managedBean.scli}"
-                             selectionMode="single"
-                             rowKey="#{cliente.codigoCliente}"
-                             paginator="true"
-                             rows="5"
-                             >
-                    
-                        
-                    <p:ajax update="@form" event="rowSelect" listener="#{managedBean.select()}" process="tblCliente"/>
-                    <p:column headerText="Nombre"> 
-                        <h:outputLabel value="#{cliente.nombre}" />
-                    </p:column>
-                <p:column headerText="Genero">
-                        <h:outputLabel value="#{cliente.genero}"/>
-                    </p:column>
-                
-                
-                </p:dataTable>
+
+                        <p:dataTable id="tblCliente" value="#{clienteBeans.lista}"
+                                     var="cliente"
+                                     selection="#{ClienteBeans.selCli}"
+                                     selectionMode="single"
+                                     rowKey="#{cliente.codigoCliente}"
+                                     >
+
+
+                            <p:ajax update="@form"  event="rowSelect" listener="#{ClienteBeans.select()}" process="tblCliente"/>
+                            <p:column headerText="Nombre"> 
+                                <h:outputLabel value="#{cliente.nombre}" />
+                            </p:column>
+                            <p:column headerText="Genero">
+                                <h:outputLabel value="#{cliente.genero}"/>
+                            </p:column>
+
+
+                        </p:dataTable>
+                    </h:form>
+                </h:panelGrid>
             </ui:define>
 
             <ui:define name="bottom">

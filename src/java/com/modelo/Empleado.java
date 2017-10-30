@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.modelo;
 
 /**
- * Nombre de la clase:Empleado
- * Versión:1.0
- * Fecha:2/10/2017
- * Copyright:ITCA-FEPADE
+ * Nombre de la clase:Empleado Versión:1.0 Fecha:2/10/2017 Copyright:ITCA-FEPADE
+ *
  * @author Karen Escobar
  */
 public class Empleado {
+
     private int codigoEmpleado;
     private String nombre;
     private String genero;
@@ -100,33 +98,44 @@ public class Empleado {
     public void setCodigoDepartamento(int codigoDepartamento) {
         this.codigoDepartamento = codigoDepartamento;
     }
-    
-    public String convertirIntereses (String[] intereses)
-    {
-        String interesesC=null;
-        for (int i = 0; i <intereses.length; i++) {
-            if(interesesC !=null)
-            interesesC = interesesC + intereses[i];
-            else
-                interesesC = intereses[i];   
+
+    public String convertirIntereses(String[] intereses) {
+        String interesesC = null;
+        for (int i = 0; i < intereses.length; i++) {
+            if (interesesC != null) {
+                interesesC = interesesC +","+ intereses[i];
+            } else {
+                interesesC = intereses[i];
+            }
         }
         return interesesC;
     }
-    public String[] obtenerIntereses(String intereses)
-    {
-        String[] interesesBase=null;
-        
-        if(intereses.equals("leer"))
+
+    public String[] obtenerIntereses(String intereses) {
+        String[] interesesBase = null;
+
+        if (intereses.equals("leer")) {
             interesesBase[1] = "leer";
-        if(intereses.equals("leer,dormir"))
+        }
+        if (intereses.equals("leer,dormir")) {
+            interesesBase[1] = "leer";
             interesesBase[2] = "dormir";
-        if(intereses.equals("leer,dormir,cantar"))
+        }
+        if (intereses.equals("leer,dormir,cantar")) {
+            interesesBase[1] = "leer";
+            interesesBase[2] = "dormir";
             interesesBase[3] = "cantar";
-        if(interesesBase.equals("leer,dormir,cantar,jugar"))
+        }
+
+        if (interesesBase.equals("leer,dormir,cantar,jugar")) {
+            interesesBase[1] = "leer";
+            interesesBase[2] = "dormir";
+            interesesBase[3] = "cantar";
             interesesBase[4] = "jugar";
-            
+        }
         
+
         return interesesBase;
     }
-    
+
 }

@@ -23,7 +23,7 @@ public class CrudCliente extends Conexion {
     public void registrarCliente(Cliente c) throws Exception {
         try {
             this.conectar();
-            String sql = "insert into (nombre,genero) values(?,?)";
+            String sql = "insert cliente into (nombre,genero) values(?,?)";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
             pre.setString(1, c.getNombre());
             pre.setString(2, c.getGenero());

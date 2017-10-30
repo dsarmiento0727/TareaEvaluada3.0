@@ -24,17 +24,17 @@ public class Conexion {
         this.con = con;
     }
     
-    public void conectar() throws Exception{
+    public void conectar(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection
-        ("jdbc:mysql://localhost:3306/crudjsf?user=root&password=karen22");
+        ("jdbc:mysql://localhost:3306/crudjsf?user=root&password=root");
         } catch (Exception e) {
-            throw e;
+          
         }
     }
     
-    public void desconectar() throws Exception{
+    public void desconectar(){
         try {
             if (con!=null) {
                 if (con.isClosed()==false) {

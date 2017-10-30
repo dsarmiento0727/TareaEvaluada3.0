@@ -8,9 +8,13 @@ package com.beans;
 
 import com.dao.CrudCliente;
 import com.modelo.Cliente;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -18,9 +22,14 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class ClienteBeans {
+
+//Agregar el implemets SERIALIZABLE
+public class ClienteBeans implements Serializable{
+   
     private Cliente cli = new Cliente();
-    private List<Cliente>listaclientes;
+    private Cliente selCli = new Cliente();
+    private List<Cliente> lista = new ArrayList<>();
+    private CrudCliente cc = new CrudCliente();
 
     public Cliente getCli() {
         return cli;
@@ -30,75 +39,68 @@ public class ClienteBeans {
         this.cli = cli;
     }
 
-    public List<Cliente> getListaclientes() {
-        return listaclientes;
+    public Cliente getSelCli() {
+        return selCli;
     }
 
-    public void setListaclientes(List<Cliente> listaclientes) {
-        this.listaclientes = listaclientes;
+    public void setSelCli(Cliente selCli) {
+        this.selCli = selCli;
     }
+
+    public List<Cliente> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Cliente> lista) {
+        this.lista = lista;
+    }
+
+    public CrudCliente getCc() {
+        return cc;
+    }
+
+    public void setCc(CrudCliente cc) {
+        this.cc = cc;
+    }
+
+ 
     
-    public void registrar() throws Exception
+    public void select()
     {
+        cli = selCli;
+    }
+    public void insertar() throws Exception {
         try {
-            CrudCliente dao = new CrudCliente();
-            dao.registrarCliente(cli);
-            this.listarC();
-            
+            cc.registrarCliente(cli);
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestionar", "Cliente Ingresado Correctamente"));
+            lista = cc.listarClientes();
+            limpiar();
         } catch (Exception e) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.toString()));
             throw e;
         }
     }
     
-    public void listarC() throws Exception
-    {
-        try {
-            CrudCliente dao = new CrudCliente();
-            listaclientes = dao.listarClientes();
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-    
-    public void leerId(Cliente cli) throws Exception
-    {
-        Cliente var;
-        try {
-            CrudCliente dao =new CrudCliente();
-            var = dao.leerId(cli);
-            if(var!=null)
-            {
-                this.cli=var;
-            }
-            
-        } catch (Exception e) {
-            throw e;
-        }
-    }       
     public void modificar() throws Exception
     {
         try {
-            CrudCliente dao = new CrudCliente();
-            dao.modificarCliente(cli);
-            this.listarC();
+            cc.modificarCliente(selCli);
+            FacesContext context= FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Gestion","Cliente Modificado Correctamente"));
+            lista = cc.listarClientes();
         } catch (Exception e) {
+             FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", e.toString()));
             throw e;
         }
     }
-    public void eliminar(Cliente cli) throws Exception
-    {
-        try {
-            CrudCliente dao = new CrudCliente();
-            dao.eliminarCliente(cli);
-            this.listarC();
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-    /**
-     * Creates a new instance of ClienteBeans
-     */
-    public ClienteBeans() {
+    public void limpiar(){
+     cli = new Cliente();
+     }
+    public ClienteBeans() throws Exception {
+        lista = cc.listarClientes();
     }
     
 }
